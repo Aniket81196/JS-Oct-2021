@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+    <style>
+        .img-wrapper{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-wrapper">
+        <img>
+    </div>
+    <script>
+        let img=document.querySelector(".img-wrapper img");
+        let src=["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+        let i=0;
+        let id=setInterval(()=>{
+            if(i<=4){
+                img.setAttribute("src","images/"+src[i]);
+                i+=1;
+            }
+            else{
+                i=0;
+                img.setAttribute("src","images/"+src[i]);
+                i+=1;
+            }
+        },2000)
+    </script>
+</body>
+</html>
