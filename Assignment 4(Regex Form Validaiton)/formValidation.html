@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Form Validation</title>
+    <style>
+        input{
+            margin-bottom: 5px;
+        }
+        .red{
+            display: none;
+            font-size: 14px;
+            color: red;
+        }
+        div{
+            margin-bottom: 20px;
+        }
+        .green{
+            display: none;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <input type="text" placeholder="Enter Email" class="email">
+        <span class="red">Incorrect Email Address</span>
+    </div>
+    <div>
+        <input type="password" placeholder="Enter Password" class="pass">
+        <span class="red">Incorrect Password</span>
+    </div>
+    <div>
+        <button>Submit</button>
+        <span class="green">Success!</span>
+    </div>
+    <script>
+        let em=document.querySelector(".email");
+        let pass=document.querySelector(".pass");
+        let button=document.querySelector("button");
+        // let email="caniket17@gmail.com";
+        // let password="Aniket123";
+        let passwordRegex=/^[A-za-z]{2,}\d*$/;
+        let emailRegex=/^\w+@\w+.\w{2,3}$/;
+        // let result2=passwordRegex.test(password);
+        // let result3=emailRegex.test(email);
+        button.addEventListener("click",()=>{
+            console.log(emailRegex.test(em.value));
+            if(emailRegex.test(em.value) && passwordRegex.test(pass.value)){
+                document.querySelector(".green").style.display="inline-block";
+                document.querySelectorAll(".red").forEach(item=>{
+                    item.style.display="none";
+                });
+                // alert("Correct Email & Password");
+            }
+            else{
+                document.querySelectorAll(".red").forEach(item=>{
+                    item.style.display="block";
+                });
+                document.querySelector(".green").style.display="none";
+                // alert("Incorrect Email & Passowrd");
+            }
+        });
+    </script>
+</body>
+</html>
