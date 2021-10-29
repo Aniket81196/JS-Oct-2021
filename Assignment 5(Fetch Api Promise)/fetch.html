@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+    <style>
+        .container{
+            max-width: 1200px;
+            margin: auto;
+        }
+        table{
+            width: 100%;
+            margin-top: 20px;
+        }
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td{
+            padding: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button>Fetch</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let btn=document.querySelector("button");
+        btn.addEventListener("click", ()=>{
+            let tbod=document.querySelector("tbody");
+            let url="https://jsonplaceholder.typicode.com/posts";
+            fetch(url).then((res)=>{
+                let resArr=res.json();
+                console.log(resArr);
+                return resArr;
+            }).then(data=>{
+                data.forEach(item => {
+                    let tr=document.createElement("tr");
+                    tr.innerHTML=`<td>${item.userId}</td><td>${item.id}</td><td>${item.title}</td><td>${item.body}</td>`;
+                    tbod.appendChild(tr);
+                });
+            }).catch((err)=>{
+                alert(err);
+            })
+        });
+    </script>
+</body>
+</html>
